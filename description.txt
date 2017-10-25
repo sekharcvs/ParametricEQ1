@@ -21,6 +21,8 @@ EXE provided is ParametricEQ.exe
 Command line description:
 
 ParametricEQ.exe <input_stream_path> <output_stream_path> <eq_gains_stream_path> <Sampling_Rate>
+Example of a command line is provided at: Debug folder at .\Debug\cmds.bat
+The batch file uses an EQ file which applies an EQ gain of +3dB between bands [5-9]. (Based on the band limits described below, 720 to 5280 Hz).
 
 The processing is done on a 20ms frame basis (This can be changed on request).
 
@@ -37,8 +39,24 @@ Details:
 An option in the file options.h called IO_SHORT can be used to control whether to use Input/Output of 16-bit integer or 32-bit float.
 Another option called DEBUGGING can be used to print some debug parameters. (This can be cleaned up later)
 
-Eq Band centers (approximate locations at sampling rates other than 48 kHz):
-20, 80, 160, 560, 880, 1340, 1940, 2800, 4320, 6920, 11120, 16240, 21420 (spanning 14 bands)
+Band descriptions in Hertz:
+ 
+Band Number   Band Begin (Hz)        Band End (Hz)           Band Centers (Hz)
+0	                0	                 40	                     20
+1	                40	                 120	                 80
+2	                120	                 200	                 160
+3	                200	                 400	                 300
+4	                400	                 720	                 560
+5	                720	                 1040	                 880
+6	                1040	             1640	                 1340
+7	                1640	             2240	                 1940
+8	                2240	             3360	                 2800
+9	                3360	             5280	                 4320
+10	                5280	             8560	                 6920
+11	                8560	             13680	                 11120
+12	                13680	             18800	                 16240
+13	                18800	             24040	                 21420              
+
 This can be changed.
 
 Other details:
