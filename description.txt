@@ -1,0 +1,47 @@
+Parametric EQ Description:
+
+Open Source Requirements:
+The current code contains open-source files from KISSFFT codebase.
+/*
+Copyright (c) 2003-2010, Mark Borgerding
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the author nor the names of any contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+EXE provided is ParametricEQ.exe
+
+Command line description:
+
+ParametricEQ.exe <input_stream_path> <output_stream_path> <eq_gains_stream_path> <Sampling_Rate>
+
+The processing is done on a 20ms frame basis (This can be changed on request).
+
+Input Description:
+<input_stream_path>    - Input is a 16-bit signed integer raw(aka binary) file/stream.
+<output_stream_path>   - Output is a 16-bit signed integer raw(aka binary) file/stream.
+<eq_gains_stream_path> - Is a binary file which specifies the eq gains for 14 bands per each processing frame.
+<Sampling_Rate>        - A number specifying the input/output sampling rate (e.g., 32000).
+
+Sample rates supported: 8000, 16000, 32000, 44100 and 48000.
+
+Details:
+
+An option in the file options.h called IO_SHORT can be used to control whether to use Input/Output of 16-bit integer or 32-bit float.
+Another option called DEBUGGING can be used to print some debug parameters. (This can be cleaned up later)
+
+Eq Band centers (approximate locations at sampling rates other than 48 kHz):
+20, 80, 160, 560, 880, 1340, 1940, 2800, 4320, 6920, 11120, 16240, 21420 (spanning 14 bands)
+This can be changed.
+
+Other details:
+Real-time processing delay is 30ms (meaning, the output sample corresponding to the current sample is generated 30 ms after receiving the current sample).
+
+
